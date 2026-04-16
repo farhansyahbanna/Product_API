@@ -33,6 +33,11 @@ app.use(generalLimiter);
 // Swagger documentation
 const swaggerUiOptions = {
   customCss: '.swagger-ui { font-family: sans-serif; }',
+  customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css',
+  customJs: [
+    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-bundle.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-standalone-preset.js'
+  ],
   customSiteTitle: 'Product API Documentation'
 };
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerUiOptions));
@@ -53,9 +58,9 @@ app.get('/', (req, res) => {
         profile: 'GET /api/auth/me (Private)'
       },
       products: {
-        getAll: 'GET /api/products',
-        getById: 'GET /api/products/:id',
-        create: 'POST /api/products (Private: User/Admin)',
+        getAll: 'GET /api/products (Private: user/admin)',
+        getById: 'GET /api/products/:id (Private: user/admin)',
+        create: 'POST /api/products (Private: Admin)',
         update: 'PUT /api/products/:id (Private: Admin only)',
         delete: 'DELETE /api/products/:id (Private: Admin only)'
       }
