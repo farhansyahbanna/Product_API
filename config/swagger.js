@@ -14,12 +14,12 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
-        description: 'Development server'
+        url: '/',
+        description: 'Current Server (Dynamic)'
       },
       {
-        url: process.env.SERVER_URL || 'http://localhost:3000',
-        description: 'Current server'
+        url: 'http://localhost:3000',
+        description: 'Local Development Server'
       }
     ],
     components: {
